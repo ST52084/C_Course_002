@@ -31,7 +31,7 @@ namespace ConsoleApp1
             if (arithmeticOperation == 'Т') { resultat = Math.Pow(firstNumber, secondNumber); }
             else {Console.WriteLine("нет такой операции"); }
 
-            Console.WriteLine("Результат вычисления:" + resultat);
+            Console.WriteLine("Результат вычисления:" + resultat); //// Привет с Работы!
         }
     }
 }

@@ -20,18 +20,18 @@ namespace ConsoleApp1
             Console.WriteLine("Д - деление");
             Console.WriteLine("О - остаток от деления");
             Console.WriteLine("Т - возведение в степень");
-            char arithmeticOperation = Convert.ToChar(Console.ReadLine());
+            string arithmeticOperation = Console.ReadLine().ToUpper();
+
 
             double resultat = 0;
-            if (arithmeticOperation == 'C') { resultat = firstNumber + secondNumber; }
-            if (arithmeticOperation == 'В') { resultat = firstNumber - secondNumber; }
-            if (arithmeticOperation == 'У') { resultat = firstNumber * secondNumber; }
-            if (arithmeticOperation == 'Д') { resultat = firstNumber / secondNumber; }
-            if (arithmeticOperation == 'О') { resultat = firstNumber % secondNumber; }
-            if (arithmeticOperation == 'Т') { resultat = Math.Pow(firstNumber, secondNumber); }
+            if (arithmeticOperation == "С")      { Console.WriteLine("Результат вычисления: " + (resultat = firstNumber + secondNumber)); }
+            else if (arithmeticOperation == "В") { Console.WriteLine("Результат вычисления: " + (resultat = firstNumber - secondNumber)); }
+            else if (arithmeticOperation == "У") { Console.WriteLine("Результат вычисления: " + (resultat = firstNumber * secondNumber)); }
+            else if (arithmeticOperation == "Д") { Console.WriteLine("Результат вычисления: " + (resultat = firstNumber / secondNumber)); } 
+            else if (arithmeticOperation == "О") { Console.WriteLine("Результат вычисления: " + (resultat = firstNumber % secondNumber)); }
+            else if (arithmeticOperation == "Т") { Console.WriteLine("Результат вычисления: " + (Math.Pow(firstNumber, secondNumber))); }
             else {Console.WriteLine("нет такой операции"); }
 
-            Console.WriteLine("Результат вычисления:" + resultat); //// Привет с Работы!
         }
     }
 }

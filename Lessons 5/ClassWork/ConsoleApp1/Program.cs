@@ -28,13 +28,12 @@ namespace ConsoleApp1
 			Console.ReadKey();
 				*/
 
-			try
-			{
-				Console.WriteLine("Введите первое число:");
-				double firstnamber = Convert.ToDouble(Console.ReadLine());
+			
+				
+				double firstnamber = ReadNumberWithoutException("Введите первое число:");    ///Вызываем метод ReadNumberWithoutException
+				double secondnamber = ReadNumberWithoutException("Введите второе число:");
 
-				Console.WriteLine("Введите второе число:");
-				double secondnamber = Convert.ToDouble(Console.ReadLine());
+		
 
 				Console.WriteLine("Введите операцию которую ледует выполнить:");
 				Console.WriteLine("(C)Сложение_(В)Вычетание_(У)_Умножение_(Д)Деление)");
@@ -60,15 +59,26 @@ namespace ConsoleApp1
 
 				Console.WriteLine("Результата: " + resultat);
 
-			}
-			catch (FormatException exception)
-			{
-
-				Console.WriteLine("Ввод некорректный");
-				
-			}
-
 			
+
+
 		}
+
+
+			static double ReadNumberWithoutException (string caption)
+			{
+				for (;;)
+				{
+				Console.WriteLine(caption);
+					int namber;
+					var resultat = int.TryParse(Console.ReadLine(), out namber);
+					if (resultat)
+					{
+						return namber;
+					}
+				}
+			}
+			
+		
 	}
 }

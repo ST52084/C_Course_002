@@ -26,7 +26,6 @@ namespace ConsoleApp1
         {
             for (; ; )
             {
-                ///Console.WriteLine(caption);
                 int Number;
                 try
                 {
@@ -50,12 +49,6 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("Ошибка System.FormatException! Попробуйте ещё раз:");
                 }
-
-
-
-
-
-
             }
         }
 

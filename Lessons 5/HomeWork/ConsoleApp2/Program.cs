@@ -98,7 +98,5 @@ namespace ConsoleApp1
             var number = Enum.TryParse(Console.ReadLine(), out a);
             return a;
         }
-
-
     }
 }

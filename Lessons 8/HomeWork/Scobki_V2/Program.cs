@@ -23,8 +23,8 @@ namespace Scobki_V2
 
             var s9 = "]]";                      //False 
             var s10 = "]";                      //False 
-            var s11 = "])([";                   //False 
-            var s12 = "][()]";                  //False 
+            var s11 = "{([])}";                 //False 
+            var s12 = "}][()]{";                //False 
 
             strList.Add(s1);
             strList.Add(s2);
@@ -40,43 +40,33 @@ namespace Scobki_V2
             strList.Add(s11);
             strList.Add(s12);
 
-            for (int h = 0; h < strList.Count; h++)
+            int h = 0;
+
+            foreach (var items in strList)
             {
-                string skobi = strList[h];
-                for (int i = 0; i < skobi.Length; i++)
+                h++;
+                string skobi = items;
+                foreach (var item in skobi)
                 {
                     rez = false;
-                    if (skobi[i] == '(')
+                    if (item == '(')
                     {
                         stack.Push('(');
                     }
-                    if (skobi[i] == '[')
+                    if (item == '[')
                     {
                         stack.Push('[');
                     }
+                    if (item == '{')
+                    {
+                        stack.Push('{');
+                    }
+
                     try
                     {
-                        if (skobi[i] == ')')
+                        if (item == ')' || item == ']' || item == '}')
                         {
-                            if (stack.Pop() == '(')
-                            {
-                                rez = true;
-                            }
-                            else
-                            {
-                                rez = false;
-                            }
-                        }
-                        if (skobi[i] == ']')
-                        {
-                            if (stack.Pop() == '[')
-                            {
-                                rez = true;
-                            }
-                            else
-                            {
-                                rez = false;
-                            }
+                            rez = Zapros(item, stack.Pop());
                         }
                     }
                     catch (InvalidOperationException)
@@ -85,9 +75,20 @@ namespace Scobki_V2
                         break;
                     }
                 }
-                Console.WriteLine("s" + Convert.ToInt32(h + 1) + " " + strList[h] + "\t\t:" + rez);
+                Console.WriteLine("s" + Convert.ToInt32(h) + " " + items + "\t\t:" + rez);
             }
         }
-
+        static bool Zapros(char symbol, char sta)
+        {
+            /// !!! В этот массив нужно добавить все возможные варианты открытых и закрытых скобок !!!
+            char[] array = { '{', '(', '[', ']', ')', '}' };
+            var a = Array.LastIndexOf(array, symbol);
+            symbol = array[array.Length - a - 1];
+            if (sta == symbol)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

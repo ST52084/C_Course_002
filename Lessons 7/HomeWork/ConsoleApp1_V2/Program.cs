@@ -8,6 +8,7 @@ namespace ConsoleApp1_V2
         {
             string[] arrayWord = new string[] { };
             int cWord = 0;
+
             Console.WriteLine("Введите строку из нескольких слов:");
 
             do
@@ -29,7 +30,7 @@ namespace ConsoleApp1_V2
         {
             string ReadWord = Console.ReadLine();
             string[] arrayWord = ReadWord.Trim().Split(" ", StringSplitOptions.RemoveEmptyEntries);   /// делим строку на массив по заданному символу
-            if (arrayWord.Length >= 2)
+            if (arrayWord.Length >= 2 & false == String.IsNullOrWhiteSpace(ReadWord))
             {
                 return arrayWord;
             }

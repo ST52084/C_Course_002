@@ -21,15 +21,15 @@ namespace ConsoleApp2_V2
         static string ReadWord(string text)
         {
             Console.WriteLine(text);
-            string readWord = Console.ReadLine();
+            string readWord = Console.ReadLine().ToLower();
             char[] array = new char[readWord.Length];
             char[] separators = { ',', '.', ' ' };
             for (int i = 0; i < readWord.Length; i++)
             {
                 array[i] = readWord[i];
-                if (true != Char.IsLetter(array[i]))
+                if (!char.IsLetter(array[i]))
                 {
-                    if (Array.IndexOf(separators, array[i]) == -1)
+                    if (Array.IndexOf(separators, array[i]) == -1 & false == String.IsNullOrWhiteSpace(readWord))
                     {
                         Console.WriteLine("Вводите только печатные симвыолы :(");
                         return null;

@@ -4,19 +4,23 @@ namespace Class_people
 {
     public class People
     {
-
         string name;
         public string Name
         {
             set
             {
                 char[] array = new char[value.Length];
+                if (string.IsNullOrEmpty(value.ToString()) == true)
+                {
+                    throw new ArgumentException("Имя не должно быть пустым.");
+                }
+
                 for (int i = 0; i < value.Length; i++)
                 {
                     array[i] = value[i];
-                    if (!char.IsLetter(array[i]) | (string.IsNullOrEmpty(value.ToString()) == true))
+                    if (!char.IsLetter(array[i]))
                     {
-                        throw new Exception("В имени должны быть только печатные символы.");
+                        throw new ArgumentException("В имени должны быть только печатные символы.");
                     }
                     else
                     {
@@ -26,6 +30,7 @@ namespace Class_people
             }
         }
 
+        public int age;
         private int _ageAfter_4_Years;
 
         public string Age
@@ -34,12 +39,12 @@ namespace Class_people
             {
                 try
                 {
-                    _ageAfter_4_Years = Convert.ToInt32(value) + 4;
+                    age = Convert.ToInt32(value);
                 }
                 catch (FormatException)
                 {
 
-                    throw new Exception("Возраст должен быть целым числом.");
+                    throw new InvalidOperationException("Возраст должен быть целым числом.");
                 }
 
             }
@@ -49,6 +54,7 @@ namespace Class_people
         {
             get
             {
+                _ageAfter_4_Years = age + 4;
                 return _ageAfter_4_Years;
             }
         }
@@ -56,8 +62,8 @@ namespace Class_people
         public string Description
         {
             get
-            {
-                return "Name: " + name + ", age in 4 years: " + _ageAfter_4_Years;
+            {                
+                return "Name: " + name + ", age in 4 years: ";
             }
         }
     }

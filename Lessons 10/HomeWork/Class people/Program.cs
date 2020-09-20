@@ -9,24 +9,22 @@ namespace Class_people
             try
             {
 
-            
-            People[] people = new People[3];
+                People[] people = new People[3];
+                for (int i = 0; i < people.Length; i++)
+                {
+                    people[i] = new People();
+                    Console.Write($"Enter name {i}:");
+                    people[i].Name = Console.ReadLine();
 
-            for (int i = 0; i < people.Length; i++)
-            {
-                people[i] = new People();
-                Console.Write($"Enter name {i}:");
-                people[i].Name = Console.ReadLine();
-
-                Console.Write($"Enter age {i}:");
-                people[i].Age = Console.ReadLine();
-            }
-
-            for (int i = 0; i < people.Length; i++)
-            {
-                Console.WriteLine(people[i].Description);
-            }
-            Console.ReadKey();
+                    Console.Write($"Enter age {i}:");
+                    people[i].Age = Console.ReadLine();
+                }
+                
+                for (int i = 0; i < people.Length; i++)
+                {
+                    Console.WriteLine(people[i].Description+people[i].AgeAfter_4_Years);
+                }
+                Console.ReadKey();
             }
 
             catch (Exception ex)

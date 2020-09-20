@@ -29,8 +29,13 @@ namespace ConsoleApp1_V2
         static string[] ReadWord()
         {
             string ReadWord = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(ReadWord))
+            {
+                Console.WriteLine("Строчка не должна быть пустой.");
+                return new string[] { };
+            }
             string[] arrayWord = ReadWord.Trim().Split(" ", StringSplitOptions.RemoveEmptyEntries);   /// делим строку на массив по заданному символу
-            if (arrayWord.Length >= 2 & false == String.IsNullOrWhiteSpace(ReadWord))
+            if (arrayWord.Length >= 2)
             {
                 return arrayWord;
             }

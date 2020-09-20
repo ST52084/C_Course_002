@@ -60,10 +60,9 @@ namespace Scobki_V3
 
         {
             var stack = new Stack<char>();
-            char a = ' '; char b = ' '; int i = 0;
+            char a = ' '; char b = ' ';
             foreach (var item in skobi)
             {
-                i++;
                 try
                 {
                     if (dic.ContainsKey(item))
@@ -77,11 +76,11 @@ namespace Scobki_V3
 
                         b = stack.Pop();
 
-                        a = VvVale(item, dic);
+                        a = returnDictionaryKey(item, dic);
 
-                        if (a == b & skobi.Length - i == 0)
+                        if (a != b)
                         {
-                            return true;
+                            return false;
                         }
                     }
                 }
@@ -91,10 +90,14 @@ namespace Scobki_V3
                     return false;
                 }
             }
+            if (stack.Count == 0)
+            {
+                return true;
+            }
             return false;
         }
 
-        static char VvVale(char item, Dictionary<char, char> dic)
+        static char returnDictionaryKey(char item, Dictionary<char, char> dic)
 
         {
             foreach (var vVale in dic)

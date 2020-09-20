@@ -37,16 +37,14 @@ namespace Class_people
         {
             set
             {
-                try
+                if (int.TryParse(value, out age))
                 {
                     age = Convert.ToInt32(value);
                 }
-                catch (FormatException)
+                else
                 {
-
                     throw new InvalidOperationException("Возраст должен быть целым числом.");
                 }
-
             }
         }
 

@@ -25,18 +25,12 @@ namespace Alarm_clock
 
         private bool _IsOutdated
         {
-            get
+            get 
             {
-                if (_TimeToAlarm >= TimeSpan.Parse("0:00:00"))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return _TimeToAlarm >= TimeSpan.Parse("0:00:00");
             }
         }
+
         public void WriteProperties()
         {
             Console.WriteLine($"Дата и время будильника:  \t {AlarmDate} " +

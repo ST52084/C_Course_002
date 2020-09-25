@@ -27,19 +27,12 @@ namespace Alarm_clock_12
         {
             get
             {
-                if (TimeToAlarm >= TimeSpan.Parse("0:00:00"))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return TimeToAlarm >= TimeSpan.Parse("0:00:00");
             }
         }
-        public virtual void WriteProperties(string typObecta)
+        public virtual void WriteProperties()
         {
-            Console.WriteLine($"Тип объекта: \t {typObecta}" +
+            Console.WriteLine($"Тип объекта: \t {GetType()}" +
                 $"\nДата и время будильника:  \t {AlarmDate}" +
                 $"\nСообщение будильника:  \t {AlarmMessage}" +
                 $"\nВремя до срабатывания: \t {TimeToAlarm}" +

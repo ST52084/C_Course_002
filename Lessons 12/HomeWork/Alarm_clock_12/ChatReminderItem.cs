@@ -15,14 +15,11 @@ namespace Alarm_clock_12
             AccountName = accountName;
         }
 
-        public override void WriteProperties(string typObecta)
+        public override void WriteProperties()
         {
-            Console.WriteLine($"Тип объекта: \t {typObecta}" +
-                $"\nДата и время будильника:  \t {AlarmDate}" +
-                $"\nСообщение будильника:  \t {AlarmMessage}" +
-                $"\nВремя до срабатывания: \t {TimeToAlarm}" +
-                $"\nПросрочено ли событие: \t {IsOutdated}" +
-                $"\nИмя чарта: \t {CharName}" +
+            base.WriteProperties();
+            Console.WriteLine(
+                $"Имя чарта: \t {CharName}" +
                 $"\nИмя аккаунта: \t {AccountName}");
         }
     }

@@ -13,15 +13,11 @@ namespace Alarm_clock_12
             PhoneNumber = phoneNumber;
         }
 
-        public override void WriteProperties(string typObecta)
+        public override void WriteProperties()
         {
-            Console.WriteLine($"Тип объекта: \t {typObecta}" +
-                $"\nДата и время будильника:  \t {AlarmDate}" +
-                $"\nСообщение будильника:  \t {AlarmMessage}" +
-                $"\nВремя до срабатывания: \t {TimeToAlarm}" +
-                $"\nПросрочено ли событие: \t {IsOutdated}" +
-                $"\nНомер телефона: \t {PhoneNumber}");
+            base.WriteProperties();
+            Console.WriteLine(
+                $"Номер телефона: \t {PhoneNumber}");
         }
-
     }
 }

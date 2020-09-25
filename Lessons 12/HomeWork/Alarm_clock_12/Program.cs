@@ -16,7 +16,7 @@ namespace Alarm_clock_12
             foreach (var item in alarm_clock)
             {
                 Console.WriteLine("************************************************************************");
-                item.WriteProperties(item.GetType().ToString());
+                item.WriteProperties();
             }
 
         }

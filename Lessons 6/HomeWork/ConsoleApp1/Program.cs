@@ -8,18 +8,14 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Введите положительное натуральное число не более 2 миллиардов:");
             int natNumber = ReadNumberWithoutException();
-            int number = natNumber;
+            string number = natNumber.ToString();
             int j = 0;
-            do
+            for (int i = 0; i < number.Length; i++)
             {
-
-                if (natNumber % 2 == 0)
+                if (Convert.ToUInt32(number[i]) % 2 == 0 && number[i] != '0')
                     j++;
-                natNumber = natNumber - 1;
-            } while (natNumber != 0);
-
+            }
             Console.WriteLine("В числе " + number + " содержится следующее количество четных цифр: " + j);
-
         }
 
         static int ReadNumberWithoutException()

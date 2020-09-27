@@ -19,34 +19,42 @@ namespace Class_people
                 Console.WriteLine(people[i].Description + people[i].AgeAfter_4_Years);
             }
             Console.ReadKey();
-
-
         }
 
         static string ReadStringWithoutExceptionName(string caption)
         {
+            string value;
             for (; ; )
             {
+                string flag = "true";
                 Console.WriteLine(caption);
-                string value = Console.ReadLine();
-                if (string.IsNullOrEmpty(value.ToString()) == true)
+                value = Console.ReadLine();
+                if (string.IsNullOrEmpty(value.ToString()))
                 {
-                    Console.WriteLine("Имя не должно быть пустым.");
+                    flag = "falseEmptyString";
                 }
 
                 for (int i = 0; i < value.Length; i++)
                 {
                     if (!char.IsLetter(value[i]))
                     {
-                        Console.WriteLine("В имени должны быть только печатные символы.");
-                        break;
-                    }
-                    else
-                    {
-                        return value;
+                        flag = "false!char";
                     }
                 }
+                if (flag == "true")
+                {
+                    break;
+                }
+                if (flag == "false!char")
+                {
+                    Console.WriteLine("В имени должны быть только печатные символы.");
+                }
+                if (flag == "falseEmptyString")
+                {
+                    Console.WriteLine("Имя не должно быть пустым.");
+                }
             }
+            return value;
         }
 
         static string ReadStringWithoutExceptionAge(string caption)

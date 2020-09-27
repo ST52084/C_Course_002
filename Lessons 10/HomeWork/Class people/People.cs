@@ -9,42 +9,16 @@ namespace Class_people
         {
             set
             {
-                char[] array = new char[value.Length];
-                if (string.IsNullOrEmpty(value.ToString()) == true)
-                {
-                    throw new ArgumentException("Имя не должно быть пустым.");
-                }
-
-                for (int i = 0; i < value.Length; i++)
-                {
-                    array[i] = value[i];
-                    if (!char.IsLetter(array[i]))
-                    {
-                        throw new ArgumentException("В имени должны быть только печатные символы.");
-                    }
-                    else
-                    {
-                        name = value;
-                    }
-                }
+                name = value;
             }
         }
 
         public int age;
-        private int _ageAfter_4_Years;
-
         public string Age
         {
             set
             {
-                if (int.TryParse(value, out age))
-                {
-                    age = Convert.ToInt32(value);
-                }
-                else
-                {
-                    throw new InvalidOperationException("Возраст должен быть целым числом.");
-                }
+                age = Convert.ToInt32(value);
             }
         }
 
@@ -52,8 +26,7 @@ namespace Class_people
         {
             get
             {
-                _ageAfter_4_Years = age + 4;
-                return _ageAfter_4_Years;
+                return age + 4;
             }
         }
 

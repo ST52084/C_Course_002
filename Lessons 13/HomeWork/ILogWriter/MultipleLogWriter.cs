@@ -4,15 +4,35 @@ using System.Text;
 
 namespace ILogWriter
 {
-    class MultipleLogWriter : FileLogWriter          //ConsoleLogWriter //FileLogWriter
+    class MultipleLogWriter : ILogWriter
     {
-        public MultipleLogWriter(List<ILogWriter> CollekciaClassov, string message)
+        List<ILogWriter> collekciaClassov;
+        public MultipleLogWriter(List<ILogWriter> CollekciaClassov)
         {
-            foreach (var item in CollekciaClassov)
+            collekciaClassov = CollekciaClassov;
+        }
+
+        public void LogError(string massage)
+        {
+            foreach (var item in collekciaClassov)
+            {
+                item.LogError(massage);
+            }
+        }
+
+        public void LogInfo(string message)
+        {
+            foreach (var item in collekciaClassov)
             {
                 item.LogInfo(message);
+            }
+        }
+
+        public void LogWarning(string message)
+        {
+            foreach (var item in collekciaClassov)
+            {
                 item.LogWarning(message);
-                item.LogError(message);
             }
         }
     }

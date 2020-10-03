@@ -8,7 +8,7 @@ namespace ConsoleApp1
 	class ErrorList : IDisposable, IEnumerable<string>
 	{
 
-		public string Category		
+		public string Category      // свойство read-only
 		{
 			get;
 		}
@@ -18,16 +18,16 @@ namespace ConsoleApp1
 			get; set;
 		}
 
-		public void Dispose()
+        public ErrorList(string category)  // Конструктор
+        {
+            Category = category;
+            _Errors = new List<string>();
+        }
+
+        public void Dispose()
 		{
 			_Errors.Clear();
 			_Errors = null;
-		}
-
-		public ErrorList(string category)  // Конструктор
-		{
-			Category = category;
-			_Errors = new List<string>();
 		}
 
 		public void Add(string errorMessage)
@@ -35,14 +35,14 @@ namespace ConsoleApp1
 			_Errors.Add(errorMessage);
 		}
 
-		public IEnumerator<string> GetEnumerator()
-		{
-			return ((IEnumerable<string>)_Errors).GetEnumerator();
-		}
+        public IEnumerator<string> GetEnumerator()
+        {
+            return ((IEnumerable<string>)_Errors).GetEnumerator();
+        }
 
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return ((IEnumerable)_Errors).GetEnumerator();
-		}
-	}
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)_Errors).GetEnumerator();
+        }
+    }
 }

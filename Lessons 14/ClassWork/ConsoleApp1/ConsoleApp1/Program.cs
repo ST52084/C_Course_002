@@ -6,10 +6,16 @@ namespace ConsoleApp1
 	{
 		static void Main(string[] args)
 		{
+            using (var errorList = new ErrorList("Program Errors"))
+            {
+                errorList.Add("I/O error");
+                errorList.Add("Some unknown error");
 
-			var errorList = new ErrorList("Error");
-
-
+                foreach (var error in errorList)
+                {
+                    Console.WriteLine(errorList.Category + ": " + error);
+                }
+            }
 
 
 		}

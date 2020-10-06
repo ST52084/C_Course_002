@@ -5,30 +5,25 @@ using System.Collections.Generic;
 
 namespace Fibonacci_V2
 {
-    class without_yield : IEnumerable<int>
+    public class without_yield : IEnumerable
     {
-        //public List<int> Fibonacci_coll{get; set;}
-        //public List<int> _fibonacci_coll = new List<int>();
 
         Fibonacci fibonacci_coll = new Fibonacci();
+            
 
-        public IEnumerator<int> GetEnumerator()
+
+        public IEnumerator GetEnumerator()
         {
-            //return (IEnumerator<int>)this;
-            return ((IEnumerator<int>)fibonacci_coll.GetEnumerator());
+            return fibonacci_coll.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            //return GetEnumerator();
             return ((IEnumerator<int>)fibonacci_coll.GetEnumerator());
         }
 
 
 
-
-
-        
         public class Fibonacci : IEnumerator
         {
             List<int> _fibonacci_coll = new List<int>();

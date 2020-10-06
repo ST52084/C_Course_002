@@ -13,7 +13,7 @@ namespace Fibonacci_V2
                 Console.WriteLine(item);
             }
 
-            Console.ReadLine();
+            ///Console.ReadLine();
             Console.WriteLine("/////////////////////////////////////////////////");
 
             without_yield fibonacci_coll2 = new without_yield();

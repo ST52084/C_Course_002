@@ -7,25 +7,17 @@ namespace Fibonacci_V2
 {
     public class without_yield : IEnumerable
     {
-        //public List<int> Fibonacci_coll{get; set;}
-        //public List<int> _fibonacci_coll = new List<int>();
-
         Fibonacci fibonacci_coll = new Fibonacci();
-            
-
 
         public IEnumerator GetEnumerator()
         {
             return fibonacci_coll.GetEnumerator();
-
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-
             return ((IEnumerator<int>)fibonacci_coll.GetEnumerator());
         }
-
 
 
         public class Fibonacci : IEnumerator

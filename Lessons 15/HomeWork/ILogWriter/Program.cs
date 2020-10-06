@@ -17,6 +17,19 @@ namespace ILogWriter
             c.LogError(massage);
             c.LogInfo(massage);
             c.LogInfo(massage);
+
+            ////////////////////////////////
+
+            var p1 = LogWriterFactory.Instance;
+            var p2 = LogWriterFactory.Instance;
+            
+            p1.GetLogWriter();
+
+            LogWriterFactory F = LogWriterFactory.Instance;
+            //F.GetLogWriter(CollekciaClassov);
+
+
+
         }
     }
 }

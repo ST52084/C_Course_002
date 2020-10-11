@@ -14,20 +14,17 @@ namespace ILogWriter
             CollekciaClassov.Add(a);
             CollekciaClassov.Add(b);
             MultipleLogWriter c = new MultipleLogWriter(CollekciaClassov);
-            c.LogError(massage);
-            c.LogInfo(massage);
-            c.LogInfo(massage);
+            //c.LogError(massage);
+            //c.LogInfo(massage);
+            //c.LogInfo(massage);
 
             ////////////////////////////////
 
-            var p1 = LogWriterFactory.Instance;
-            var p2 = LogWriterFactory.Instance;
-            
-            p1.GetLogWriter();
 
-            LogWriterFactory F = LogWriterFactory.Instance;
-            //F.GetLogWriter(CollekciaClassov);
-
+            LogWriterFactory<ILogWriter> F = LogWriterFactory<ILogWriter>.Instance;
+            F.GetLogWriter<ILogWriter>(c).LogError(massage);
+            F.GetLogWriter<ILogWriter>(c).LogInfo(massage);
+            F.GetLogWriter<ILogWriter>(c).LogWarning(massage);
 
 
         }

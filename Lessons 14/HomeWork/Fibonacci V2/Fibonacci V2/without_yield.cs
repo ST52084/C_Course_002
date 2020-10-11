@@ -5,22 +5,22 @@ using System.Collections.Generic;
 
 namespace Fibonacci_V2
 {
-    public class without_yield : IEnumerable
+    public class without_yield : IEnumerable<int>
     {
         Fibonacci fibonacci_coll = new Fibonacci();
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<int> GetEnumerator()
         {
             return fibonacci_coll.GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        IEnumerator<int> IEnumerable<int>.GetEnumerator()
         {
             return ((IEnumerator<int>)fibonacci_coll.GetEnumerator());
         }
 
 
-        public class Fibonacci : IEnumerator
+        public class Fibonacci : IEnumerator<int>
         {
             List<int> _fibonacci_coll = new List<int>();
             int _position = 0;
@@ -33,7 +33,7 @@ namespace Fibonacci_V2
                 get
                 {
                     _fibonacci_coll.Add(_previous);
-                    return _previous;
+                    return (int) _previous;
                 }
             }
 
@@ -57,11 +57,17 @@ namespace Fibonacci_V2
                 _position = 0;
             }
 
-            public IEnumerator GetEnumerator()
+            public void Dispose()
             {
-                return (IEnumerator)this;
+                //_Errors.Clear();
             }
+
+
+            //public IEnumerator<int> GetEnumerator()
+            //{
+            //    return (IEnumerator<int>)this;
+            //}
         }
-        
+
     }
 }

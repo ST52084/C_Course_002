@@ -5,26 +5,24 @@ using System.Text;
 namespace ILogWriter
 {
 
-    class LogWriterFactory 
+    class LogWriterFactory<T>
     {
-        //private LogWriterFactory _nameClass;
-        private static LogWriterFactory instace;
+
+        
+        private static LogWriterFactory<T> instace;
 
 
-        public static LogWriterFactory Instance =>
-            instace ?? (instace = new LogWriterFactory());
+        public static LogWriterFactory<T> Instance =>
+            instace ?? (instace = new LogWriterFactory<T>());
 
         private LogWriterFactory()
         {
         }
-
+        
 
         public ILogWriter GetLogWriter<T>(object parameters) where T : ILogWriter
         {
-            //return (ILogWriter)instace;
             return (ILogWriter)parameters;
-            //return (ILogWriter)_logWriterFactory;
         }
-
     }
 }

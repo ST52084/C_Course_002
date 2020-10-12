@@ -5,8 +5,10 @@ using System.Text;
 namespace ConsoleApp1
 {
     class Generator
+    
     {
-        public event Action<byte[]> DataGenerator; // создаем событие
+        public event EventHandler<GeneratorEventArgs> DataGenerator; // создаем событие
+
         public void Generate(int count)
         {
             byte[] a = new byte[count];
@@ -15,8 +17,16 @@ namespace ConsoleApp1
             {
                 a[i] = Convert.ToByte(rand.Next(0, 100));
             }
-            DataGenerator?.Invoke(a);   // проверяем на нуль
+
+            var b = new GeneratorEventArgs();
+            b.MassByte = a;
+            DataGenerator?.Invoke(this, b);   // проверяем на нуль
         }
         // ctor - горячие клавиши для создания конструктора
+    }
+
+    class GeneratorEventArgs
+    {
+        public byte[] MassByte { get; set; }
     }
 }

@@ -6,31 +6,27 @@ namespace ConsoleApp1
 {
     class FileWriterWithProgress
     {
-        public event Action WritingPerformed;
-        public event Action WritingCompleted;
+        public event EventHandler<GeneratorEventArgs> WritingPerformed;
+        public event EventHandler<GeneratorEventArgs> WritingCompleted;
+        
 
         public void WriteBytes(string fileName, byte[] data, float percentageToFireEvent)
         {
+
+            var b = new GeneratorEventArgs();
+            b.MassByte = data;
+
             for (int i = 0; i < (Math.Truncate(1 / percentageToFireEvent)); i++)
             {
-                WritingPerformed += A1_WritingPerformed;
-
+                WritingPerformed?.Invoke(this, b);
             }
-            WritingCompleted += A1_WritingCompleted;
-
-            WritingPerformed?.Invoke();
-            WritingCompleted?.Invoke();
+            WritingCompleted?.Invoke(this, b);
         }
+    }
 
-        private void A1_WritingCompleted()
-        {
-            Console.WriteLine("Событие - WritingCompleted");
-        }
-
-        private void A1_WritingPerformed()
-        {
-            Console.WriteLine("Событие - WritingPerformed");
-        }
+    class GeneratorEventArgs
+    {
+        public byte[] MassByte { get; set; }
     }
 
 }

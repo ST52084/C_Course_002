@@ -37,5 +37,13 @@ namespace Reminder.Storage
         public override string ToString() =>
             $"Reminder (id:{Id}, status : {Status}) at {DateTime:O} to {ContactId}";
 
+        public void MarkSent()
+        {
+            if (Status != ReminderItemStatus.Created)
+            {
+
+            }
+        }
+
     }
 }

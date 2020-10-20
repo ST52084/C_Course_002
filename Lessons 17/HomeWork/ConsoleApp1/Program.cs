@@ -6,26 +6,31 @@ namespace ConsoleApp1
     class Program
     {
         static void Main(string[] args)
-        {
-            Byte[] data = new Byte[4] { 1, 2, 3, 5 };
+        {            
+            Byte[] data = new Byte[100];
+
+            for (int i = 0; i < 100; i++)
+            {
+                data[i] = Convert.ToByte(i);
+            }
 
             var writer = new FileWriterWithProgress();
-            writer.WritingCompleted += Writer_WritingCompleted;
             writer.WritingPerformed += Writer_WritingPerformed;
+            writer.WritingCompleted += Writer_WritingCompleted1;
 
-            writer.WriteBytes("log.txt", data, Convert.ToSingle(0.15));
+            writer.WriteBytes("log.txt", data, Convert.ToSingle(0.10));
         }
 
-
-        private static void Writer_WritingCompleted(object sender, GeneratorEventArgs e)
-        {
-            Console.WriteLine("Событие - WritingCompleted");
-        }
         private static void Writer_WritingPerformed(object sender, GeneratorEventArgs e)
         {
             Console.WriteLine("Событие - WritingPerformed");
-            File.WriteAllBytes("txt.txt", e.MassByte);
         }
+
+        private static void Writer_WritingCompleted1(object sender, EventArgs e)
+        {
+            Console.WriteLine("Событие - WritingCompleted");
+        }
+
 
     }
 }
